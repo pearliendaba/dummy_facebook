@@ -8,6 +8,8 @@ const User = require('../models/user');
 
 const mongoose = require('mongoose');
 
+
+//sign up the user
 router.post('/signup', async (req, res) => {
         const {
             name,
@@ -45,6 +47,35 @@ router.post('/signup', async (req, res) => {
 
     // exists = await user.
 })
+
+//login for user
+router.post('/login', async (req, res) => {
+
+    const {
+        email,
+        password
+    } = req.body
+
+const user = new User({
+    _id: new mongoose.Types.ObjectId,
+    email: email,
+    password: password
+});
+
+//checks if the email and password are valid, if not notify they are invalid
+exists = await User.findOne({ email: email , password:password});
+if(!exists){
+    return res.json({
+        msg: "Invalid email/password!"
+    })
+}
+else{
+    return res.json({
+        msg: "Successful login!"
+
+})
+}
+});
 
 
 
