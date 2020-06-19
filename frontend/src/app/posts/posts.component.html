@@ -1,0 +1,65 @@
+<div class="container">
+
+    <hr class="my-5">
+
+    <!-- New post button -->
+    <a (click)="addPost()">
+        <mdb-icon fas icon="plus" size="2x" aria-hidden="true"></mdb-icon>
+    </a>
+
+    <!-- List of posts -->
+    <div class="card-deck">
+        <mdb-card>
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h5>
+                        <!-- Posters name -->
+                        Adelaide
+                    </h5>
+                </mdb-card-title>
+                <mdb-card-text>
+                    <!-- posts from database to here -->
+                    <p>Welcome to The Chat</p>
+                </mdb-card-text>
+            </mdb-card-body>
+            <mdb-card-footer>
+                <!-- commect button -->
+                <a mdbBtn floating="true" size="lg" mdbWavesEffect>
+                    <mdb-icon far icon="comment-dots"></mdb-icon>
+                </a>
+
+                <!-- like button -->
+                <a mdbBtn floating="true" size="lg" (click)="count = count + 1" mdbWavesEffect>
+                    <mdb-icon far icon="heart"></mdb-icon>
+                    <span>
+                        {{count}}
+                    </span>
+                </a>
+
+                <!-- delete button -->
+                <a mdbBtn floating="true" size="lg" (click)="data=''" mdbWavesEffect>
+                    <mdb-icon far icon="trash-alt"></mdb-icon>
+                </a>
+            </mdb-card-footer>
+        </mdb-card>
+
+    </div>
+
+    <!-- New post textarea popup -->
+
+    <!-- comment textarea popup -->
+    <!-- <mdb-card id="comment">
+            <mdb-card-body>
+              <mdb-card-text>
+                  comment from the database
+                  This is my comment
+              </mdb-card-text>
+              <div class="flex-row">
+                 <a mdbBtn floating="true" size="lg" mdbWavesEffect>
+                    <mdb-icon far icon="trash-alt"></mdb-icon>
+                </a>
+              </div>
+            </mdb-card-body>
+          </mdb-card> -->
+
+    

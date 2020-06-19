@@ -1,0 +1,32 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color fixed-top" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" target="_blank" style="color:white">Dummy Facebook</a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links> 
+
+    <!-- Links -->
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+                <a class="dropdown-item waves-light" href="https://github.com/dylut2000" target="_blank">Settings</a>
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Sign Out</a>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+
+
+  <router-outlet></router-outlet>
