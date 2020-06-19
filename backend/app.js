@@ -10,4 +10,9 @@ app.use(bodyParser.json());
 const userRoutes = require('./api/routes/user');
 app.use('/user', userRoutes);
 
+//post Route
+const postRoute = require('./api/routes/post');
+app.use('/posts',postRoute);
+
+
 module.exports = app;
