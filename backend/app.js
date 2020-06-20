@@ -14,4 +14,9 @@ app.use('/user', userRoutes);
 app.use('/comments', commentRoutes);
 
 
+//post Route
+const postRoute = require('./api/routes/post');
+app.use('/posts',postRoute);
+
+
 module.exports = app;
