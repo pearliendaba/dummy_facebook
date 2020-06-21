@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const post = require("../models/postModel");
+const like = require("../models/likeModel");
 
-// //adding a post
+// //adding a like
 router.route("/").post(function(req, res) {
-    post.insertMany(
+    like.insertMany(
       [
-        { content: req.body.content },
+        { like: req.body.like },
       ],
       function(err, result) {
         if (err) {
@@ -19,9 +19,9 @@ router.route("/").post(function(req, res) {
   });
 
 
-  // getting all posts
+  // getting all likes
   router.route('/').get(function(req,res)  {
-    post.find({},function(err,result){
+    like.find({},function(err,result){
         if(err){
             res.send(err);
         } else {
@@ -30,16 +30,6 @@ router.route("/").post(function(req, res) {
     })
   })
 
-
-  //Deleting a post 
-  router.route('/:id').delete(function(req,res){
-    post.deleteOne({ id:req.params.id}, function (err) {
-        if(err) console.log(err);
-        res.send("deleted");
-      });
-  });
-
   
-
 
 module.exports = router;

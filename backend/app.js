@@ -14,5 +14,9 @@ app.use('/user', userRoutes);
 const postRoute = require('./api/routes/post');
 app.use('/posts',postRoute);
 
+//like route
+const likeRoute = require('./api/routes/like');
+app.use('/likes',likeRoute);
+
 
 module.exports = app;
