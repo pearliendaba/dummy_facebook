@@ -11,6 +11,10 @@ let post = new Schema({
     type: String
   },
 
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+
 });
+
+
 
 module.exports = mongoose.model('post',post);

@@ -4,15 +4,18 @@ const router = express.Router();
 
 const connection = require('../models/connection');
 
+//import for the post model
+const post =  require('../models/postModel');
+//import for the comment model
 const Comment = require('../models/comments');
 
 const mongoose = require('mongoose');
 
-
-router.route("/comments").post(function(req, res) {
+//router for posting a comment(s) on certain post
+router.route("/post/:id/comments").post(function(req, res) {
     Comment.insertMany(
       [
-        { comment: req.body.comment }
+        { comment: req.body.comment}
       ],
       function(err, result) {
         if (err) {
@@ -24,4 +27,6 @@ router.route("/comments").post(function(req, res) {
     );
   });
 
+
 module.exports = router;
+

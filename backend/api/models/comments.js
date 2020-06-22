@@ -4,10 +4,10 @@ var commentSchema = new mongoose.Schema({
 
     _id: mongoose.Schema.Types.ObjectId,
 
-    comment: { 
+    comment:[ { 
         type: String
-        }
-
+        } ]
+    
 });
 
 module.exports = mongoose.model('Comment', commentSchema);

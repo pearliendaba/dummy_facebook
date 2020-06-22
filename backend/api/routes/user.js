@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const connection = require('../models/connection');
-
+//import the User schema
 const User = require('../models/user');
 
 const mongoose = require('mongoose');
@@ -28,10 +28,10 @@ router.post('/signup', async (req, res) => {
     exists = await User.findOne({ email: email });
     if(exists){
         return res.json({
-            msg: "User exists, please log in"
+            msg: "User exists, please log in."
         })
     }
-
+    //saves the email and password to the database if the user does not exist
      user
     .save()
     .then(result =>{
@@ -77,6 +77,19 @@ else{
 }
 });
 
+//logout user
+router.post('/logout', async (req, res) => {
 
+    if (req.session) {
+        // delete session object
+        req.session.destroy(function(err) {
+          if(err) {
+            return next(err);
+          } else {
+            return res.redirect('/');
+          }
+        });
+      }
+});
 
 module.exports = router;

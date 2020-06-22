@@ -16,7 +16,7 @@ app.use('/comments', commentRoutes);
 
 //post Route
 const postRoute = require('./api/routes/post');
-app.use('/posts',postRoute);
+app.use('/post',postRoute);
 
 
 module.exports = app;
