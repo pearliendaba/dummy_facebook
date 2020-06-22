@@ -2,6 +2,9 @@ require('./api/models/connection')
 const express = require('express');
 const app =  express();
 const bodyParser =  require('body-parser');
+const cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

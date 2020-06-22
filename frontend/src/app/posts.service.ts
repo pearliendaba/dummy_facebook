@@ -14,6 +14,14 @@ export class PostsService {
 
   constructor(private http: HttpClient) { }
 
+
+  //register a user
+  registerUser(user){
+   return this.http.post('http://localhost:3001/user/signup', user)
+  }
+
+
+
   //User Login Validation
   validateLogin(user: User){
 		return this.http.post('API HERE!!!!',{
