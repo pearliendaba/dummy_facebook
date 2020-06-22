@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+ 
 
 
 @Component({
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+  export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   constructor(private service:PostsService, private formBuilder: FormBuilder, private router: Router) {
@@ -19,6 +21,7 @@ export class RegisterComponent implements OnInit {
 
   AddUser(){
     this.service.registerUser(this.registerForm.value).subscribe(res =>{
+     // this.showSuccess();
       this.router.navigate(['/posts']);
       console.log(res)
     
@@ -33,5 +36,8 @@ export class RegisterComponent implements OnInit {
   });
   }
 
+  // showSuccess() {
+  //   this.toastr.success('Hello world!', 'Toastr fun!');
+  // }
 
 }
