@@ -32,27 +32,20 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getAllPost();
-
-    // this.service.postAdded_Observable.subscribe(res => {
-    //   this.getAllPost();
-    // });
     this.validatingForm = new FormGroup({
-      subscriptionFormModalName: new FormControl('', Validators.required),
-      subscriptionFormModalEmail: new FormControl('', Validators.email)
+      post: new FormControl('', Validators.email)
     });
   }
 
+  get post() {
+    return this.validatingForm.get('post');
+  }
+
+  newPost(){
+    console.log(this.validatingForm.value)
+  }
 
   
-  get subscriptionFormModalName() {
-    return this.validatingForm.get('subscriptionFormModalName');
-  }
-
-  get subscriptionFormModalEmail() {
-    return this.validatingForm.get('subscriptionFormModalEmail');
-  }
-
   // newPost(): void{
   //     const dialogRef = this.dialog.open( {
   //       width: '250px',
