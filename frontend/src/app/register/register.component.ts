@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,13 +12,14 @@ import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
-  constructor(private service:PostsService, private formBuilder: FormBuilder) {
+  constructor(private service:PostsService, private formBuilder: FormBuilder, private router: Router) {
     
    }
 
 
   AddUser(){
     this.service.registerUser(this.registerForm.value).subscribe(res =>{
+      this.router.navigate(['/posts']);
       console.log(res)
     
     })
