@@ -33,16 +33,19 @@ export class PostsComponent implements OnInit {
 
   ngOnInit() {
     this.validatingForm = new FormGroup({
-      post: new FormControl('', Validators.email)
+      content: new FormControl('', Validators.email)
     });
   }
 
-  get post() {
-    return this.validatingForm.get('post');
+  get content() {
+    return this.validatingForm.get('content');
   }
 
   newPost(){
-    console.log(this.validatingForm.value)
+    this.service.AddPost(this.validatingForm.value).subscribe(res =>{
+      console.log(res);
+    })
+    // console.log(this.validatingForm.value)
   }
 
   

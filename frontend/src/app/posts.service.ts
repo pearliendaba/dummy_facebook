@@ -24,20 +24,18 @@ export class PostsService {
     return this.http.post('http://localhost:3000/user/login', user)
    }
 
-  
-  
-  notifyPostAddition(){
-		this.postAdded_Observable.next();
+   
+   AddPost(post){
+    return this.http.post('http://localhost:3000/post' ,post );
   }
   
-  getAllPost(){
-		return this.http.post('API HERE!!!!',{})
-  }
+  // notifyPostAddition(){
+	// 	this.postAdded_Observable.next();
+  // }
   
-  addPost(post: Post){
-		return this.http.post('API HERE!!!',{
-			title : post.title,
-			description : post.description
-		})
-	}
+  // getAllPost(){
+	// 	return this.http.post('API HERE!!!!',{})
+  // }
+  
+ 
 }
