@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { User } from 'models/user.model';
@@ -10,34 +10,25 @@ import { User } from 'models/user.model';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
-  // the module expoted from backend () user.js
-   public user : User;
+  constructor(private service: PostsService, private router: Router,private formBuilder: FormBuilder) {
 
-  constructor(private service: PostsService, private router: Router) {
-    this.user = new User();
 }
 
   ngOnInit() {
-    
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+  });
   }
 
-  validateLogin() {
-    if(this.user.username && this.user.password) {
-        this.service.validateLogin(this.user).subscribe(result => {
-        console.log('result is ', result);
-        if(result['status'] === 'success') {
-          this.router.navigate(['/post']);
-        } else {
-          alert('Wrong email or password');
-        }
-         
-      }, error => {
-        console.log('error is ', error);
-      });
-    } else {
-        alert('enter email and password');
-    }
-  }
+ LogUserIn(){
+   this.service.login(this.loginForm.value).subscribe(res => {
+     console.log(res)
+   })
+ // console.log(this.loginForm.value)
+ }
+
 
 }

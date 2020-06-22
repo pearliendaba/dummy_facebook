@@ -15,20 +15,20 @@
         <mdb-card-body>
 
             <!-- Form -->
-            <form class="text-center" style="color: #757575;">
+            <form class="text-center" style="color: #757575;" [formGroup]="loginForm">
 
                 <!-- E-mail -->
                 <div class="md-form mt-0">
-                    <input type="email" id="materialRegisterFormEmail" class="form-control" mdbInput>
+                    <input type="email" id="materialRegisterFormEmail" class="form-control" mdbInput formControlName="email">
                     <label for="materialRegisterFormEmail">
-                            <mdb-icon fas icon="envelope"></mdb-icon> E-mail
+                            <mdb-icon fas icon="envelope"></mdb-icon> Email
                     </label>
                 </div>
 
                 <!-- Password -->
                 <div class="md-form">
                     <input type="password" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock"
-                        mdbInput>
+                        mdbInput formControlName="password">
                     <label for="materialRegisterFormPassword">
                             <mdb-icon fas icon="key"></mdb-icon> Password
                     </label>
@@ -36,7 +36,7 @@
 
                 <!-- Sign in button -->
                 <button mdbBtn color="info" outline="true" rounded="true" block="true" class="my-4 waves-effect z-depth-0"
-                    mdbWavesEffect type="submit">Sign in</button>
+                    mdbWavesEffect type="submit" (click)="LogUserIn()">Sign in</button>
 
                 <!-- Register -->
                 <p>Not a member?

@@ -17,18 +17,14 @@ export class PostsService {
 
   //register a user
   registerUser(user){
-   return this.http.post('http://localhost:3001/user/signup', user)
+   return this.http.post('http://localhost:3000/user/signup', user)
   }
 
+  login(user){
+    return this.http.post('http://localhost:3000/user/login', user)
+   }
 
-
-  //User Login Validation
-  validateLogin(user: User){
-		return this.http.post('API HERE!!!!',{
-			username : user.username,
-			password : user.password
-		})
-  }
+  
   
   notifyPostAddition(){
 		this.postAdded_Observable.next();
