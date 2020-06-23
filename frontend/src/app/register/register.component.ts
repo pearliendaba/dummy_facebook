@@ -21,8 +21,6 @@ import { ToastrService } from 'ngx-toastr';
 
   AddUser(){
     this.service.registerUser(this.registerForm.value).subscribe(res =>{
-     // this.showSuccess();
-      this.router.navigate(['/posts']);
       console.log(res)
     
     })

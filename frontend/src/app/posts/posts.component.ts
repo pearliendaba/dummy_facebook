@@ -17,6 +17,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 export class PostsComponent implements OnInit {
   validatingForm: FormGroup;
+  posts:any;
 
   // declare before constructor
   // count: number = 0;
@@ -28,7 +29,7 @@ export class PostsComponent implements OnInit {
  // @ViewChild('closeBtn') closeBtn: ElementRef;
 
   constructor(private service: PostsService, private router: Router) {
-    // this.clickCount()
+    this.getPosts()
   }
 
   ngOnInit() {
@@ -45,41 +46,15 @@ export class PostsComponent implements OnInit {
     this.service.AddPost(this.validatingForm.value).subscribe(res =>{
       console.log(res);
     })
-    // console.log(this.validatingForm.value)
   }
 
+  getPosts(){
+    this.service.getAllPosts().subscribe(res => {
+      this.posts = res ;
+      console.log(res);
+    })
+  }
   
-  // newPost(): void{
-  //     const dialogRef = this.dialog.open( {
-  //       width: '250px',
-  //       data: {post: this.post, }
-  //     });
-  
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       console.log('The dialog was closed');
-  //       this.post = result;
-  //     });
-  //   }
-  
-  //Getting all posts
-  // getAllPost(){
-  // 	this.service.getAllPost().subscribe(result => {
-  // 		console.log('result is ', result);
-  // 		this.posts = result['data'];
-  // 	});
-  // }
-
-  // addPost() {
-  // 	if(this.post.description){
-  // 		this.service.addPost(this.post).subscribe(res =>{
-  // 			//this.closeBtn.nativeElement.click();
-  //       this.service.notifyPostAddition();
-  // 		});
-  // 	} else {
-  // 		alert('Title and Description required');
-  // 	}
-  // }
-
   //Counting the number of likes
   // clickCount(): void {
   //   this.count++
@@ -87,15 +62,6 @@ export class PostsComponent implements OnInit {
 
 
 
-  // getStudent(id) {
-  //   this.clicked = false
-  //   console.log('comment works');
-  // }
-
-
-  // delete(info: string): void {
-  //   this.data += `Text changed to '${info}'\n`;
-  // }
 
 
 }

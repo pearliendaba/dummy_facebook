@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const post = require("../models/postModel");
 const comments = require('../models/comments');
+const mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
+
 
 // //adding a post
 router.route("/").post(function(req, res) {
@@ -41,14 +44,16 @@ router.route("/").post(function(req, res) {
   })
  
   //Deleting a post as well as its comments
-  router.route('/:id').delete(function(req,res){
-    post.deleteOne({ id:req.params.id}, function (err) {
+  router.route('/:id').delete(async  function(req,res){
+
+     await post.deleteOne({ id:ObjectId(req.params.id)}, function (err) {
+      console.log(req.params.id)
         if(err) console.log(err);
 
         comments.deleteOne({ id:req.params.id}, function (err) {
           if(err) console.log(err);
 
-        res.send("Successful deletion");
+        res.send("deleted");
       });
   });
 

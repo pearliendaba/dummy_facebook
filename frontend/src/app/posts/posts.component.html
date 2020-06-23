@@ -1,12 +1,6 @@
 <div class="container">
 
     <hr class="my-5">
-
-    <!-- New post button -->
-    <!-- <a (click)="addPost()">
-        <mdb-icon fas icon="plus" size="2x" aria-hidden="true"></mdb-icon>
-    </a> -->
-
     <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
         (click)="frame.show()" mdbWavesEffect>Add Post
 </button>
@@ -38,8 +32,8 @@
 </div>
 
     <!-- List of posts -->
-    <div class="card-deck">
-        <mdb-card>
+    <div class="ard w-75 mb-3" *ngFor="let post of posts">
+        <mdb-card >
             <mdb-card-body>
                 <mdb-card-title>
                     <h5>
@@ -49,7 +43,7 @@
                 </mdb-card-title>
                 <mdb-card-text>
                     <!-- posts from database to here -->
-                    <p>Welcome to The Chat</p>
+                    <p>{{post.content}}</p>
                 </mdb-card-text>
             </mdb-card-body>
             <mdb-card-footer>
