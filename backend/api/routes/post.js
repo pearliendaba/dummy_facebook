@@ -49,7 +49,7 @@ router.route("/").post(function(req, res) {
 
   //get the post by id and populate it with its comments
   router.route('/:id').get(function(req,res)  {
-    post.findById(req.params.id).populate('comment').populate('author').then((post) => {
+    post.findById(req.params.id).populate('comment').then((post) => {
       res.render('Post', { post })
     }).catch((err) => {
       console.log(err.message)

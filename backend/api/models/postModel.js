@@ -13,7 +13,7 @@ let post = new Schema({
 
   comment: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comment' }],
 
-  // author : { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
+   //author : { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }
 
 });
 

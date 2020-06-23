@@ -15,7 +15,7 @@ var userSchema = new mongoose.Schema({
     { 
         type: String,require:true
     },
-    post : [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }]
+    //post : [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }]
 });
 
 module.exports = mongoose.model('User', userSchema);
