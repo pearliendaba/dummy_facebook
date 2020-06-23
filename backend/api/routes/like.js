@@ -16,6 +16,13 @@ router.route("/").post(function(req, res) {
         }
       }
     );
+
+    like
+    .save()
+    .then(post => {
+    return User.findById(req.user._id);
+  });
+
   });
 
 

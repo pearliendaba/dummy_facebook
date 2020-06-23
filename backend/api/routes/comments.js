@@ -4,16 +4,17 @@ const router = express.Router();
 
 const connection = require('../models/connection');
 
-//import for the post model
+//import post model
 const post =  require('../models/postModel');
-//import for the comment model
-const Comment = require('../models/comments');
+
+//import comment model
+const comment = require('../models/comments');
 
 const mongoose = require('mongoose');
 
 //router for posting a comment(s) on certain post
 router.route("/post/:id/comments").post(function(req, res) {
-    Comment.insertMany(
+    comment.insertMany(
       [
         { comment: req.body.comment}
       ],
@@ -25,6 +26,13 @@ router.route("/post/:id/comments").post(function(req, res) {
         }
       }
     );
+
+    comment
+    .save()
+    .then(post => {
+    return User.findById(req.user._id);
+  });
+
   });
 
 
