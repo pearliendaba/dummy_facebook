@@ -3,6 +3,7 @@ import { PostsService } from '../posts.service';
 import { Post } from 'models/post.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -45,7 +46,10 @@ export class PostsComponent implements OnInit {
   //add new post
   newPost(){
     this.service.AddPost(this.validatingForm.value).subscribe(res =>{
+      this.getPosts()
+      swal("New Post", "you have added a post", "success");
       console.log(res);
+      
     })
   }
 
@@ -60,17 +64,12 @@ export class PostsComponent implements OnInit {
   //delete post
 deletePost(id){
   this.service.removePost(id).subscribe(res =>{
+    this.getPosts()
+    swal("Deleted post");
+    swal("Delete Post", "you have deleted a post", "success");
     console.log(res)
   })
 }
-
-
-  //Counting the number of likes
-  // clickCount(): void {
-  //   this.count++
-  // }
-
-
 
 
 

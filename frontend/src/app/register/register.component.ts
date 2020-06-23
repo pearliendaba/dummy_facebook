@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
+import swal from 'sweetalert';
 
  
 
@@ -21,6 +22,7 @@ import { Router } from '@angular/router';
 
   AddUser(){
     this.service.registerUser(this.registerForm.value).subscribe(res =>{
+      swal("Welcome To Chat", "you have sucessfully created an accout ", "success");
       console.log(res)
     
     })
