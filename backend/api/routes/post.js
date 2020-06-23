@@ -5,6 +5,8 @@ const comments = require('../models/comments');
 const mongoose = require('mongoose');
 var ObjectId = mongoose.Types.ObjectId;
 
+const comment = require('../models/comments');
+const User = require('../models/user');
 
 // //adding a post
 router.route("/").post(function(req, res) {
@@ -20,7 +22,16 @@ router.route("/").post(function(req, res) {
         }
       }
     );
+
+    post.author = req.user._id;
+
+    post
+    .save()
+    .then(post => {
+    return User.findById(req.user._id);
   });
+
+});
 
 
   // getting all posts
@@ -34,10 +45,12 @@ router.route("/").post(function(req, res) {
     })
   })
 
+
+
   //get the post by id and populate it with its comments
   router.route('/:id').get(function(req,res)  {
-    post.findById(req.params.id).populate('comments').then((post) => {
-      res.render('post', { post })
+    post.findById(req.params.id).populate('comment').populate('author').then((post) => {
+      res.render('Post', { post })
     }).catch((err) => {
       console.log(err.message)
     })

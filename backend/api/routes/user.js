@@ -45,9 +45,7 @@ router.post('/signup', async (req, res) => {
         error:err
     });
 
-    // exists = await user.
-})
-
+});
 //login for user
 router.post('/login', async (req, res) => {
 
