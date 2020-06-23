@@ -27,12 +27,6 @@ router.route("/post/:id/comments").post(function(req, res) {
       }
     );
 
-    comment
-    .save()
-    .then(post => {
-    return User.findById(req.user._id);
-  });
-
   });
 
 

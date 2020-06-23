@@ -30,9 +30,14 @@ export class PostsService {
     return this.http.post('http://localhost:3000/post' ,post );
   }
   
+  //getting all posts
   getAllPosts(){
 		return this.http.get('http://localhost:3000/post');
   }
   
+  //deleting a post 
+removePost(id){
+  return this.http.delete('http://localhost:3000/post/' + id )
+}
  
 }

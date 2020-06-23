@@ -38,7 +38,7 @@
                 <mdb-card-title>
                     <h5>
                         <!-- Posters name -->
-                        Adelaide
+                        <!-- {{post.author.name}} -->
                     </h5>
                 </mdb-card-title>
                 <mdb-card-text>
@@ -61,7 +61,7 @@
                 </a>
 
                 <!-- delete button -->
-                <a mdbBtn floating="true" size="lg" (click)="data=''" mdbWavesEffect>
+                <a mdbBtn floating="true" size="lg" (click)="deletePost(post._id)" mdbWavesEffect>
                     <mdb-icon far icon="trash-alt"></mdb-icon>
                 </a>
             </mdb-card-footer>

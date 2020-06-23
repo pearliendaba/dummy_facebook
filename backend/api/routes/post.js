@@ -23,13 +23,13 @@ router.route("/").post(function(req, res) {
       }
     );
 
-    post.author = req.user._id;
+    // post.author = req.user._id;
 
-    post
-    .save()
-    .then(post => {
-    return User.findById(req.user._id);
-  });
+  //   post
+  //   .save()
+  //   .then(post => {
+  //   return User.findById(req.user._id);
+  // });
 
 });
 
@@ -59,15 +59,18 @@ router.route("/").post(function(req, res) {
   //Deleting a post as well as its comments
   router.route('/:id').delete(async  function(req,res){
 
-     await post.deleteOne({ id:ObjectId(req.params.id)}, function (err) {
+      
+    post.deleteOne({ _id:ObjectId(req.params.id)}, function (err, result) {
       console.log(req.params.id)
         if(err) console.log(err);
 
-        comments.deleteOne({ id:req.params.id}, function (err) {
-          if(err) console.log(err);
+
+        console.log(result)
+      //   comments.deleteOne({ id:req.params.id}, function (err) {
+      //     if(err) console.log(err);
 
         res.send("deleted");
-      });
+      // });
   });
 
 });

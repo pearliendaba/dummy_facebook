@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
  
 
 
@@ -34,8 +34,5 @@ import { ToastrService } from 'ngx-toastr';
   });
   }
 
-  // showSuccess() {
-  //   this.toastr.success('Hello world!', 'Toastr fun!');
-  // }
 
 }

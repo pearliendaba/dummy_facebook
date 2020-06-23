@@ -42,19 +42,29 @@ export class PostsComponent implements OnInit {
     return this.validatingForm.get('content');
   }
 
+  //add new post
   newPost(){
     this.service.AddPost(this.validatingForm.value).subscribe(res =>{
       console.log(res);
     })
   }
 
+  //get all posts
   getPosts(){
     this.service.getAllPosts().subscribe(res => {
       this.posts = res ;
       console.log(res);
     })
   }
-  
+
+  //delete post
+deletePost(id){
+  this.service.removePost(id).subscribe(res =>{
+    console.log(res)
+  })
+}
+
+
   //Counting the number of likes
   // clickCount(): void {
   //   this.count++
