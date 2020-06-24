@@ -3,7 +3,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { User } from 'models/user.model';
-import swal from 'sweetalert';
+
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
  LogUserIn(){
    this.service.login(this.loginForm.value).subscribe(res => {
     localStorage.setItem('user', JSON.stringify(this.loginForm.value))
-    swal("Welcome To Chat", "you have sucessfully logged in", "success");
+
      console.log(res)
    })
  
