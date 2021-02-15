@@ -1,0 +1,115 @@
+<div class="container">
+
+    <hr class="my-5">
+    <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+        mdbWavesEffect>Add Post
+    </button>
+
+    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">New Post</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <mdb-icon fas icon="pencil-alt" class="prefix"></mdb-icon>
+                        <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput
+                            [formControl]="content"></textarea>
+                        <label for="form2">Write Something here ...</label>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button mdbBtn color="indigo" class="waves-light" mdbWavesEffect (click)="newPost()">Post
+                        <mdb-icon far icon="paper-plane" class="ml-1"></mdb-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List of posts -->
+    <div class="ard w-80 mb-3" *ngFor="let post of posts">
+        <mdb-card>
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h5>
+                        <!-- Posters name -->
+                        <!-- {{post.author.name}} -->
+                    </h5>
+                </mdb-card-title>
+                <mdb-card-text>
+                    <!-- posts from database to here -->
+                    <p>{{post.content}}</p>
+                </mdb-card-text>
+            </mdb-card-body>
+            <mdb-card-footer>
+                <!-- comment button -->
+                <div *ngIf="comment">
+                    <a mdbBtn floating="true" size="lg" id="comment" rounded="true" data-toggle="modal"
+                        data-target="#basicExample" (click)="open(content)"  mdbWavesEffect>
+                        <mdb-icon far icon="comment-dots"></mdb-icon>
+                    </a>
+
+                    <!-- like button -->
+                    <a mdbBtn floating="true" size="lg" (click)="count = count + 1" mdbWavesEffect>
+                        <mdb-icon far icon="heart"></mdb-icon>
+                        <span>
+                            {{count}}
+                        </span>
+                    </a>
+
+                    <!-- delete button -->
+                    <a mdbBtn floating="true" size="lg" (click)="deletePost(post._id)" mdbWavesEffect>
+                        <mdb-icon far icon="trash-alt"></mdb-icon>
+                    </a>
+                </div>
+            </mdb-card-footer>
+        </mdb-card>
+
+    </div>
+
+    <!-- comments form popup -->
+
+
+    <div *ngIf="!comment">
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Comments</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+     <!-- list of comments  -->
+     <div class="actionBox">
+        <ul class="commentList" *ngFor="let comments of [1,1,1]">
+            <li>
+                <div class="commentText">
+                    <p>COMMENTS HERE!!!</p>
+                    <a mdbBtn floating="true" size="lg" mdbWavesEffect>
+                        <mdb-icon far icon="trash-alt"></mdb-icon>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <!-- adding a new comments  -->
+        <form class="form-inline" role="form">
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Add a comment" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-default">Add</button>
+            </div>
+        </form>
+    </div>
+    </div>
+    
+  </ng-template>
+  
+    </div>
